@@ -1,0 +1,163 @@
+def user_input():
+	print('party level?')
+	global partyLevel
+	partyLevel = float(input())
+	print('how many party members?')
+	global partyNumber
+	partyNumber = int(input())
+	print("what threat level do you want? 1 is trivial, 2 is low, 3 is moderate, 4 is severe, 5 is extreme ")
+	global threatLevel
+	threatLevel = int(input())
+	global partyLevelModify
+	PartyLevelModify = float(1.0)
+	global enemies #remember to global anything used by multiple blocks
+	global enemiesParty
+
+def budgeter():
+	if (threatLevel == 1):
+		xpBudget = 40
+	elif (threatLevel == 2):
+		xpBudget = 60
+	elif (threatLevel ==3):
+		xpBudget = 80
+	elif (threatLevel == 4):
+		xpBudget = 120
+	else:
+		xpBudget = 160
+	partyNumberModify = (partyNumber / 4)
+	if (threatLevel == 2):
+		partyNumberModify = (partyNumber - 1) / 3
+	xpBudget = (int((xpBudget / 10) * partyNumberModify)) * 10
+	return(xpBudget)
+	
+
+def partyComp():
+	import random
+	x = int(budgeter())
+	xPerm = x #if reference is needed
+	x = x / 5
+	y = partyLevel
+	enemiesParty = []
+	'''
+	howMany = (random.randint(1,3) + random.randint(0,3)) #may not need if able to pull from budget biased
+	x = x / howMany 
+	#x is now budget allotment for individual
+	print("how many is", howMany, "and", x, "is how much to spend")
+	'''
+	
+	enemies = [2, 3, 4, 6, 8, 12, 16, 24, 32]
+	number = True
+	while number == True:
+
+		monster = random.choice(enemies)
+		x = x - int(monster)		
+				#weights need to be adjusted by budget(x)
+		if (x >= 2):
+			enemiesParty.append(str(monster))
+			number = True
+		elif (x <0):
+			x = x + monster	#refunds if negitive
+		else:
+			number = False
+			enemiesParty.append(str(monster))
+			print('leftover budget is', x * 5)
+			
+			print(enemiesParty)
+		
+	
+	'''
+	enemiesRandom =   # a sequence or set will work here.
+	num_to_select = howMany                           # set the number to select here.
+	list_of_random_items = random.sample(group_of_items, num_to_select)
+	first_random_item = list_of_random_items[0]
+	second_random_item = list_of_random_items[1] '''
+	
+	
+	'''
+	Threat	XP Budget	Character Adjustment
+Trivial	40 or less	10 or less
+Low	60	20
+Moderate	80	20
+Severe	120	30
+Extreme	160	40
+
+Creature Level	XP	Suggested Role
+Party Level -4	10	Low-threat lackey
+Party Level -3	15	Low- or moderate-threat lackey
+Party Level -2	20	Any lackey or standard creature
+Party Level -1	30	Any standard creature
+Party Level	40	Any standard creature or low-threat boss
+Party Level +1	60	Low- or moderate-threat boss
+Party Level +2	80	Moderate- or severe-threat boss
+Party Level +3	120	Severe- or extreme-threat boss
+Party Level +4	160	Extreme-threat solo boss
+'''
+
+while 1 == 1:
+	def main():
+		user_input()
+		print(budgeter())
+		partyComp()
+	main()
+
+
+
+"""
+may not need, but still able to use
+1Elite Boss(160XP): one creature of party level +4
+5Brute squad with captain(160XP): one creature of party level +1, two creatures of party level -1, two creatures party level -2
+5Boss and Lackeys (120 XP): One creature of party level + 2, four creatures of party level – 4
+2Boss and Lieutenant (120 XP): One creature of party level + 2, one creature of party level
+3Elite Enemies (120 XP): Three creatures of party level
+5Lieutenant and Lackeys (80 XP): One creature of party level, four creatures of party level – 4
+2Mated Pair (80 XP): Two creatures of party level
+3Troop (80 XP): One creature of party level, two creatures of party level – 2
+1Solo Boss(80 XP): one creature of party level + 2
+4Squad(80XP): Four creatures of party level - 2
+4Scouting Patrol(80XP):one creature of party level -1, one creature of party level -2, two creatures of party level -3
+6Mook Squad (60 XP): Six creatures of party level – 4
+3Scouting Party(60XP): One creature of party level - 1, two creatures of party level - 3
+3Hunting party(60XP): Three creatures of party level -2
+"""
+
+
+
+"""
+#use for party generation
+Creature Level	XP	Suggested Role
+Party Level -4	10	Low-threat lackey
+Party Level -3	15	Low- or moderate-threat lackey
+Party Level -2	20	Any lackey or standard creature
+Party Level -1	30	Any standard creature
+Party Level	40	Any standard creature or low-threat boss
+Party Level +1	60	Low- or moderate-threat boss
+Party Level +2	80	Moderate- or severe-threat boss
+Party Level +3	120	Severe- or extreme-threat boss
+Party Level +4	160	Extreme-threat solo boss
+"""
+
+
+"""
+#use for loot generation
+Level	Total Treasure per Level	Low	Moderate	Severe	Extreme	Extra Treasure
+1	175 gp	13 gp	18 gp	26 gp	35 gp	35 gp
+2	300 gp	23 gp	30 gp	45 gp	60 gp	60 gp
+3	500 gp	38 gp	50 gp	75 gp	100 gp	100 gp
+4	850 gp	65 gp	85 gp	130 gp	170 gp	170 gp
+5	1,350 gp	100 gp	135 gp	200 gp	270 gp	270 gp
+6	2,000 gp	150 gp	200 gp	300 gp	400 gp	400 gp
+7	2,900 gp	220 gp	290 gp	440 gp	580 gp	580 gp
+8	4,000 gp	300 gp	400 gp	600 gp	800 gp	800 gp
+9	5,700 gp	430 gp	570 gp	860 gp	1,140 gp	1,140 gp
+10	8,000 gp	600 gp	800 gp	1,200 gp	1,600 gp	1,600 gp
+11	11,500 gp	865 gp	1,150 gp	1,725 gp	2,300 gp	2,300 gp
+12	16,500 gp	1,250 gp	1,650 gp	2,475 gp	3,300 gp	3,300 gp
+13	25,000 gp	1,875 gp	2,500 gp	3,750 gp	5,000 gp	5,000 gp
+14	36,500 gp	2,750 gp	3,650 gp	5,500 gp	7,300 gp	7,300 gp
+15	54,500 gp	4,100 gp	5,450 gp	8,200 gp	10,900 gp	10,900 gp
+16	82,500 gp	6,200 gp	8,250 gp	12,400 gp	16,500 gp	16,500 gp
+17	128,000 gp	9,600 gp	12,800 gp	19,200 gp	25,600 gp	25,600 gp
+18	208,000 gp	15,600 gp	20,800 gp	31,200 gp	41,600 gp	41,600 gp
+19	355,000 gp	26,600 gp	35,500 gp	53,250 gp	71,000 gp	71,000 gp
+20	490,000 gp	36,800 gp	49,000 gp	73,500 gp	98,000 gp	98,000 gp
+"""

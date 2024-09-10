@@ -11,7 +11,7 @@ def user_input():
 	global partyLevelModify
 	PartyLevelModify = float(1.0)
 	global enemies #remember to global anything used by multiple blocks
-	global enemiesParty
+	global enemiesPartyVisual
 
 def budgeter():
 	if (threatLevel == 1):
@@ -32,12 +32,14 @@ def budgeter():
 	
 
 def partyComp():
-	import random
+
 	x = int(budgeter())
 	xPerm = x #if reference is needed
 	x = x / 5
 	y = partyLevel
+	import random
 	enemiesParty = []
+	enemiesPartyVisual = []
 	'''
 	howMany = (random.randint(1,3) + random.randint(0,3)) #may not need if able to pull from budget biased
 	x = x / howMany 
@@ -62,7 +64,31 @@ def partyComp():
 			enemiesParty.append(str(monster))
 			print('leftover budget is', x * 5)
 			
-			print(enemiesParty)
+			
+			for x in enemiesParty:
+				if int(x) == 2:
+					enemiesPartyVisual.append("PL-4")
+				if int(x) == 3:
+					enemiesPartyVisual.append("PL-3")
+				if int(x) == 4:
+					enemiesPartyVisual.append("PL-2")
+				if int(x) == 6:
+					enemiesPartyVisual.append("PL-1")
+				if int(x) == 8:
+					enemiesPartyVisual.append("PL")
+				if int(x) == 12:
+					enemiesPartyVisual.append("PL+1")
+				if int(x) == 16:
+					enemiesPartyVisual.append("PL+2")
+				if int(x) == 24:
+					enemiesPartyVisual.append("PL+3")
+				if int(x) == 32:
+					enemiesPartyVisual.append("PL+4")
+			list.sort(enemiesPartyVisual)
+			print(enemiesPartyVisual)
+			#done generating party
+			
+			
 		
 	
 	'''

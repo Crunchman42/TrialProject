@@ -1,0 +1,119 @@
+
+#game starts here
+
+#idk what all needs defined here but this is a collection of things i think i need
+import random
+options = ["Rock", "Paper", "Scissors"]
+replayGame = True
+playGame=False
+gameAffirm = ("Y", "y", "Yes", "YES", "YEs", "YeS", "yES", "yes")
+rockOptions = ("rock", "Rock", "ROCK", "r", "R")
+paperOptions = ("Paper", "paper", "PAPER", "P", "p")
+scisOptions = ("Scissors", "scissors", "SCISSORS", "S", "s")
+countWin = 0
+countLoss = 0
+countTie = 0
+
+
+
+
+#start game with inputs
+def introGame():
+	global replayGame
+	print("Shall we play a game?")
+	print("Y/N?")
+	if input() in gameAffirm:
+		replayGame = True
+		print("Yay!")
+	else:
+		replayGame = False
+		
+		
+#to not double play based on run through while game == true, i made an inturrupter to stop the one last playthrough to check if false
+def myGame():
+	mainGame()
+	global replayGame
+	print("Again?")
+	if input() in gameAffirm:
+		if replayGame == True:
+			myGame()
+	else:
+		replayGame = False
+		print("well played")
+
+def gameOver():
+	print("Game Over")
+	print("Final score:")
+	print("wins", countWin)
+	print("losses", countLoss)
+	print("ties", countTie)
+	
+def mainGame():
+	def gameCompare():
+		global countLoss
+		global countWin
+		global countTie
+		print(playersChoice, "against", botChoice)
+		
+		if playersChoice == "Rock":
+			if botChoice == "Paper":
+				print("Paper beats rock!")
+				countLoss += 1
+			elif botChoice == "Scissors":
+				print("Rock beats Scissors")
+				countWin += 1
+			else:
+				print("Tie Game!")
+				countTie += 1
+				
+		elif playersChoice == "Paper":
+			if botChoice == "Rock":	
+				print("Paper beats rock!")
+				countWin += 1
+			elif botChoice == "Scissors":
+				print("Scissors beats Paper")
+				countLoss += 1
+			else:
+				print("Tie Game!")
+				countTie += 1
+			
+		elif playersChoice == "Scissors":
+			if botChoice == "Paper":
+				print("Scissors beats Rock")
+				countWin += 1
+			elif botChoice == "Rock":
+				print("Rock beats Scissors")
+				countLoss += 1
+			else:
+				print("Tie Game!")
+				countTie += 1
+			
+				
+	print("Rock, Paper or Scissors?")
+	playersChoice = str(input())
+	botChoice = random.choice(options)
+	if playersChoice in rockOptions:		
+		playersChoice = "Rock"
+		gameCompare()
+	elif playersChoice in paperOptions:
+		playersChoice = "Paper"
+		gameCompare()
+	elif playersChoice in scisOptions:
+		playersChoice = "Scissors"
+		gameCompare()
+	else:
+		print("Sorry, I dont understand.")
+
+	
+	
+	
+def main():
+	introGame()
+	while replayGame == True:
+		print("Good Luck")
+		myGame()
+	else:
+		gameOver()
+	
+main()
+

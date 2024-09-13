@@ -1,0 +1,230 @@
+
+
+enviroments = ("any", "aquatic", "desert", "extraplaner", "forest", "hills", "jungle", "mountains", "plains", "swamp", "tundra", "underground", "urban")
+families = ("aberration", "animal", "asteral", "beast", "celestial", "construct", "dragon", "dream", "elemental", "ethereal", "fey", "fiend", "fungus", "giant", "humanoid", "monitor", "ooze", "petitioner", "plant", "shadow", "spirit", "time", "undead")
+
+
+class monster:
+	def __init__(self, name, size, terrain, family, type, CR):
+		self.name = name
+		self.size = size
+		self.terrain = terrain
+		self.family = family
+		self.type = type
+		self.CR = CR
+		
+
+mVampBatSwarm = monster("Vampire bat swarm", "large", "any", "animal", "bat", 1)
+mCaveBear = monster("Cavebear", "large", "any", "animal", "bear", 6)
+mCentipedeSwarm = monster("Centipede swarm", "large", "any", "animal", "centipede", 3)
+mGiantCentipede = monster("Giant Centipede", "medium", "any", "animal", "centipede", -1)
+mGuardDog = monster("Guard Dog", "small", "any", "animal", "dog", -1)
+mRidingDog = monster("Riding Dog", "medium", "any", "animal", "dog", 1)
+mRidingHorse = monster("Riding Horse", "large", "any", "animal", "horse", 1)
+mWarPony = monster("War Pony", "medium", "any", "animal", "horse", 1)
+mGiantGecko = monster("Giant Gecko", "medium", "any", "animal", "lizard", 1)
+mHuntingSpider = ("Hunting Spider", "medium", "any", "animal", "spider", 1)
+mSpiderSwarm = monster("Spider swarm", "large", "any", "animal", "spider", 0)
+mGiantTarantula = monster("Giant Tarantula", "large", "any", "animal", "spider", 6)
+mGiantAnt = monster("Giant ant", "medium", "any", "animal", "ant", 2)
+mGiantWhiptailCentipede = monster("Giant Whiptail Centipede", "huge", "any", "animal", "centipede", 3)
+mTitanCentipede = monster("Titan centipede", "gargantuan", "any", "animal", "centipede", 9)
+mCockroachSwarm = monster("Cockroach swarm", "large", "any", "animal", "cocroach", 2)
+mGiantCockroach = monster("Giant cockroach", "small", "any", "animal", "cocroach", 1)
+mGiantFly = monster("Giant fly", "medium", "any", "animal", "fly", 1)
+mGiantMaggot = monster("Giant maggot", "medium", "any", "animal", "fly", 0)
+mGiantMosquito = monster("Giant mosquito", "medium", "any", "animal", "mosquito", 6)
+mRaven = monster("Raven", "tiny", "any", "animal", "raven", -1)
+mRavenSwarm = monster("Raven swarm", "large", "any", "animal", "raven", 3)
+mGiantSlug = monster("Giant slug", "Huge", "any", "animal", "slug", 8)
+mSportleboreSwarm = monster("Sportlebore swarm", "large", "any", "animal", "sportlebore", 7)
+mGiantTick = monster("Giant tick", "small", "any", "animal", "tick", 1)
+mTickSwarm = monster("Tick swarm", "large", "any", "animal", "tick", 9)
+mFadingFox = monster("Fading fox", "tiny", "any", "animal", "fox", 2)
+mRedFox = monster("Red fox", "tiny", "any", "animal", "fox", -1)
+mViperSwarm = monster("Viper swarm", "large", "any", "animal", "snake", 4)
+mMegalictus = monster("Megalictus", "medium", "any", "animal", "weasel", 3)
+mWeasel = monster("Weasel", "tiny", "any", "animal", "weasel", -1)
+
+
+def monSort():
+	pulledMonsters = []
+	sortedMons = []
+	allMonsters = dict(globals())
+	dupeMonsters = []
+	for name, var in allMonsters.items():
+		if isinstance(var, monster):
+			pulledMonsters.append(var)	
+	for index, x in enumerate(pulledMonsters):
+		if getattr(x, "CR") == 8:
+			sortedMons.append(((index, vars(x))))
+			print(sortedMons)
+			
+
+monSort()
+
+
+
+'''
+Bunyip																			 aquatic			
+Electric eel																 aquatic			
+Giant moray eel															 aquatic			
+Giant octopus																 aquatic			
+Sea serpent																	 aquatic			
+Great white shark														 aquatic			
+Megalodon																		 aquatic			
+Giant crab																	 aquatic			
+Spinosaurus																	 aquatic			
+Bottlenose dolphin													 aquatic			
+Orca																				 aquatic			
+Elasmosaurus																 aquatic			
+Giant hippocampus														 aquatic			
+Hippocampus																	 aquatic			
+Behemoth hippopotamus												 aquatic			
+Hippopotamus																 aquatic			
+Fire jellyfish swarm												 aquatic			
+Giant jellyfish															 aquatic			
+Blue–ringed octopus													 aquatic			
+Reef octopus																 aquatic			
+Manta ray																		 aquatic			
+Stingray																		 aquatic			
+Sea snake																		 aquatic			
+Giant squid																	 aquatic			
+Vampire squid																 aquatic			
+Snapping turtle															 aquatic			
+Giant hermit crab														 aquatic			
+Hermit crab swarm														 aquatic			
+Common eurypterid														 aquatic			
+Spiny eurypterid														 aquatic			
+Piranha swarm																 aquatic			
+Pufferfish																	 aquatic			
+Platecarpus																	 aquatic			
+Tylosaurus																	 aquatic			
+Narwhal																			 aquatic			
+Giant seahorse															 aquatic			
+Trilobite																		 aquatic			
+Trilobite swarm															 aquatic			
+Giant scorpion 															 desert				
+Scorpion swarm															 desert				
+Black scorpion															 desert				
+Duneshaker solifugid												 desert				
+Giant solifugid															 desert				
+Giant toad																	 desert				
+Camel																				 desert				
+Giant vulture																 desert				
+Grizzly bear																 forest				
+Boar																				 forest				
+Deinonychus																	 forest				
+Velociraptor																 forest				
+Mammoth																			 forest				
+Goblin dog																	 forest				
+Giant frilled lizard												 forest				
+Giant mantis																 forest				
+Viper																				 forest				
+Giant viper																	 forest				
+Giant wasp																	 forest				
+Wasp swarm																	 forest				
+Army ant swarm															 forest				
+Badger																			 forest				
+Giant badger																 forest				
+Black bear																	 forest				
+Hadrosaurid																	 forest				
+Mastodon																		 forest				
+Giant wolverine															 forest				
+Wolverine																		 forest				
+Giant opossum																 forest				
+Khravgodon																	 forest				
+Giant porcupine															 forest				
+Giant skunk																	 forest				
+Skunk																				 forest				
+Giant flying squirrel												 forest				
+Squirrel swarm															 forest				
+Ankylosaurus 																 hills				
+Griffon																			 hills				
+Dire wolf																		 hills				
+Hippogriff																	 hills				
+Ogre spider																	 hills				
+Amphisbaena																	 hills				
+Gorilla.           													 jungle				
+Megaprimatus																 jungle				
+Leopard																			 jungle				
+Tiger																				 jungle				
+Brontosaurus																 jungle				
+Giant Monitor lizard												 jungle				
+Deadly mantis																 jungle				
+Pteranodon																	 jungle				
+Quetzalcoatlus															 jungle				
+Ball python																	 jungle				
+Giant anaconda															 jungle				
+Goliath spider															 jungle				
+Giant chameleon															 jungle				
+Dream spider																 jungle				
+Mokele-mbembe																 jungle				
+Monkey																			 jungle				
+Monkey swarm																 jungle				
+Giant pangolin															 jungle				
+Megatherium																	 jungle				
+Three-toed sloth								 						 jungle				
+Daeodon																			 mountains		
+Eagle																				 mountains		
+Roc																					 mountains		
+Rosethorn ram																 mountains		
+Wolliped																		 mountains		
+Zetogeki																		 mountains		
+Ankhrav																			 plains				
+Hive mother																	 plains				
+Bulette																			 plains				
+Lion																				 plains				
+Smilodon																		 plains				
+Stegosaurus																	 plains				
+Triceratops																	 plains				
+Tyrannosaurus																 plains				
+Elephant																		 plains				
+Hyaenodon																		 plains				
+Hyena																				 plains				
+Wolf																				 plains				
+Compsognathus																 plains				
+Pachycephalosaurus													 plains				
+Anancus																			 plains				
+Megalania																		 plains				
+Rhinoceros																	 plains				
+Bison																				 plains				
+Kangaroo																		 plains				
+Ringhorn ram																 plains				
+Terror bird																	 plains				
+Terror shrike																 plains				
+Yzobu																				 plains				
+Giant stag beetle														 swamp				
+Bloodseeker																	 swamp				
+Crocodile																		 swamp				
+Deinosuchus																	 swamp				
+Krooth																			 swamp				
+Iguanodon																		 swamp				
+Giant dragonfly															 swamp				
+Giant dragonfly nymph												 swamp				
+Giant frog																	 swamp				
+Spear frog																	 swamp				
+Brood leech swarm														 swamp				
+Giant leech																	 swamp				
+Fen mosquito swarm													 swamp				
+Shocker lizard															 swamp				
+Emperor cobra																 swamp				
+Giant snapping turtle												 swamp				
+Polar bear																	 tundra				
+Frost worm																	 tundra				
+Woolly rhinoceros														 tundra				
+Moose																				 tundra				
+Giant bat																		 underground	
+Flash beetle																 underground	
+Azure worm																	 underground	
+Slurk																				 underground		
+Aurumvorax																	 underground	
+Blindheim																		 underground	
+Cave fisher																	 underground	
+Cave scorpion																 underground	
+Bore worm swarm															 underground	
+Empress bore worm														 underground	
+Rat snake swarm															 underground	
+Giant rat																		 urban				
+Rat swarm																		 urban				
+'''

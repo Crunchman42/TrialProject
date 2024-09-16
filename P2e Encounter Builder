@@ -1,17 +1,67 @@
+#"working" but only run once... need to find where things are mucking up on reruns.
+
+import random
+
+class monster:
+	def __init__(self, name, size, terrain, family, type, CR):
+		self.name = name
+		self.size = size
+		self.terrain = terrain
+		self.family = family
+		self.type = type
+		self.CR = CR
+		
+mVampBatSwarm = monster("Vampire bat swarm", "large", "any", "animal", "bat", 1)
+mCaveBear = monster("Cavebear", "large", "any", "animal", "bear", 6)
+mCentipedeSwarm = monster("Centipede swarm", "large", "any", "animal", "centipede", 3)
+mGiantCentipede = monster("Giant Centipede", "medium", "any", "animal", "centipede", -1)
+mGuardDog = monster("Guard Dog", "small", "any", "animal", "dog", -1)
+mRidingDog = monster("Riding Dog", "medium", "any", "animal", "dog", 1)
+mRidingHorse = monster("Riding Horse", "large", "any", "animal", "horse", 1)
+mWarPony = monster("War Pony", "medium", "any", "animal", "horse", 1)
+mGiantGecko = monster("Giant Gecko", "medium", "any", "animal", "lizard", 1)
+mHuntingSpider = ("Hunting Spider", "medium", "any", "animal", "spider", 1)
+mSpiderSwarm = monster("Spider swarm", "large", "any", "animal", "spider", 0)
+mGiantTarantula = monster("Giant Tarantula", "large", "any", "animal", "spider", 6)
+mGiantAnt = monster("Giant ant", "medium", "any", "animal", "ant", 2)
+mGiantWhiptailCentipede = monster("Giant Whiptail Centipede", "huge", "any", "animal", "centipede", 3)
+mTitanCentipede = monster("Titan centipede", "gargantuan", "any", "animal", "centipede", 9)
+mCockroachSwarm = monster("Cockroach swarm", "large", "any", "animal", "cocroach", 2)
+mGiantCockroach = monster("Giant cockroach", "small", "any", "animal", "cocroach", 1)
+mGiantFly = monster("Giant fly", "medium", "any", "animal", "fly", 1)
+mGiantMaggot = monster("Giant maggot", "medium", "any", "animal", "fly", 0)
+mGiantMosquito = monster("Giant mosquito", "medium", "any", "animal", "mosquito", 6)
+mRaven = monster("Raven", "tiny", "any", "animal", "raven", -1)
+mRavenSwarm = monster("Raven swarm", "large", "any", "animal", "raven", 3)
+mGiantSlug = monster("Giant slug", "Huge", "any", "animal", "slug", 8)
+mSportleboreSwarm = monster("Sportlebore swarm", "large", "any", "animal", "sportlebore", 7)
+mGiantTick = monster("Giant tick", "small", "any", "animal", "tick", 1)
+mTickSwarm = monster("Tick swarm", "large", "any", "animal", "tick", 9)
+mFadingFox = monster("Fading fox", "tiny", "any", "animal", "fox", 2)
+mRedFox = monster("Red fox", "tiny", "any", "animal", "fox", -1)
+mViperSwarm = monster("Viper swarm", "large", "any", "animal", "snake", 4)
+mMegalictus = monster("Megalictus", "medium", "any", "animal", "weasel", 3)
+mWeasel = monster("Weasel", "tiny", "any", "animal", "weasel", -1)
+
 def user_input():
-	print('party level?')
-	global partyLevel
-	partyLevel = float(input())
-	print('how many party members?')
-	global partyNumber
-	partyNumber = int(input())
-	print("what threat level do you want? 1 is trivial, 2 is low, 3 is moderate, 4 is severe, 5 is extreme ")
+
 	global threatLevel
-	threatLevel = int(input())
+	global partyNumber
 	global partyLevelModify
-	PartyLevelModify = float(1.0)
-	global enemies #remember to global anything used by multiple blocks
+	global enemies #remember to global anything used by multiple blocks?
 	global enemiesPartyVisual
+	global partyLevel
+
+	print('party level?')
+	partyLevel = float(input())
+
+	print('how many party members?')
+	partyNumber = int(input())
+
+	print("what threat level do you want? 1 is trivial, 2 is low, 3 is moderate, 4 is severe, 5 is extreme ")
+	threatLevel = int(input())
+
+	PartyLevelModify = float(1.0) #needs to be float
 
 def budgeter():
 	if (threatLevel == 1):
@@ -40,20 +90,11 @@ def partyComp():
 	import random
 	enemiesParty = []
 	enemiesPartyVisual = []
-	'''
-	howMany = (random.randint(1,3) + random.randint(0,3)) #may not need if able to pull from budget biased
-	x = x / howMany 
-	#x is now budget allotment for individual
-	print("how many is", howMany, "and", x, "is how much to spend")
-	'''
-	
 	enemies = [2, 3, 4, 6, 8, 12, 16, 24, 32]
 	number = True
 	while number == True:
-
 		monster = random.choice(enemies)
 		x = x - int(monster)		
-				#weights need to be adjusted by budget(x)
 		if (x >= 2):
 			enemiesParty.append(str(monster))
 			number = True
@@ -62,9 +103,6 @@ def partyComp():
 		else:
 			number = False
 			enemiesParty.append(str(monster))
-			print('leftover budget is', x * 5)
-			
-			
 			for x in enemiesParty:
 				if int(x) == 2:
 					enemiesPartyVisual.append("PL-4")
@@ -85,85 +123,95 @@ def partyComp():
 				if int(x) == 32:
 					enemiesPartyVisual.append("PL+4")
 			list.sort(enemiesPartyVisual)
-			print(enemiesPartyVisual)
+			return enemiesPartyVisual
 			#done generating party
 			
-			
+def lootGen():
+
+	
+	if (threatLevel == 1):
+		personalGoldReward = False
+	elif (threatLevel == 2):
+		personalGoldReward = 0
+	elif (threatLevel ==3):
+		personalGoldReward = 1
+	elif (threatLevel == 4):
+		personalGoldReward = 	2	
+	elif (threatLevel == 5):
+		personalGoldReward = 3
 		
-	
-	'''
-	enemiesRandom =   # a sequence or set will work here.
-	num_to_select = howMany                           # set the number to select here.
-	list_of_random_items = random.sample(group_of_items, num_to_select)
-	first_random_item = list_of_random_items[0]
-	second_random_item = list_of_random_items[1] '''
-	
-	
-	'''
-	Threat	XP Budget	Character Adjustment
-Trivial	40 or less	10 or less
-Low	60	20
-Moderate	80	20
-Severe	120	30
-Extreme	160	40
+	#partyLevel
+	#need formula for gold generation		
+  #party level 1-20, need to find equation for gold table
+  #build list? with each base and put through function for gold table equation with threat level choosing which four bases, trivial has none.
+  #return amount of gold and subtract loot from value.
+  
+def monSort(x):
+	desiredLevel= x
+	allMons = []
+	sortedMons = []
 
-Creature Level	XP	Suggested Role
-Party Level -4	10	Low-threat lackey
-Party Level -3	15	Low- or moderate-threat lackey
-Party Level -2	20	Any lackey or standard creature
-Party Level -1	30	Any standard creature
-Party Level	40	Any standard creature or low-threat boss
-Party Level +1	60	Low- or moderate-threat boss
-Party Level +2	80	Moderate- or severe-threat boss
-Party Level +3	120	Severe- or extreme-threat boss
-Party Level +4	160	Extreme-threat solo boss
-'''
+	allVariables = dict(globals(), **locals())
+	
+	for name, var in allVariables.items():
+		if isinstance(var, monster):
+			allMons.append(var) 
+		for x in allMons:
+			if int(getattr(x, "CR")) == int(desiredLevel):
+				if x not in sortedMons:
+					sortedMons.append(x)
+	return sortedMons
+	
+	    #add to monster bank
+	
+def monPicker():
+	global partyLevel
+	monList = partyComp()
+	monLevelList = []
+	levelList = []
+	#monChoices = monSort(x)
+	partyNumber 
+	for x in monList:
+		if x == "PL-4":
+			monLevelList.append(-4)
+		if x == "PL-3":
+			monLevelList.append(-3)
+		if x == "PL-2":
+			monLevelList.append(-2)
+		if x == "PL-1":
+			monLevelList.append(-1)
+		if x == "PL":
+			monLevelList.append(0)
+		if x == "PL+1":
+			monLevelList.append(1)
+		if x == "PL+2":
+			monLevelList.append(2)
+		if x == "PL+3":
+			monLevelList.append(3)
+		if x == "PL+4":
+			monLevelList.append(4)
+	for x in monLevelList:
+		levelList.append(random.choice((monSort(partyLevel + x))))
+	for x in levelList:
+		print(x.__dict__)
+	
+	
 
-while 1 == 1:
+while 1 == 1: #to test with different inputs
 	def main():
-		user_input()
-		print(budgeter())
-		partyComp()
+		user_input() 
+		monPicker()#returns enemiesPartyVisual
+		#monSort() #returns sortedMons
 	main()
+	
 
 
-
-"""
-may not need, but still able to use
-1Elite Boss(160XP): one creature of party level +4
-5Brute squad with captain(160XP): one creature of party level +1, two creatures of party level -1, two creatures party level -2
-5Boss and Lackeys (120 XP): One creature of party level + 2, four creatures of party level – 4
-2Boss and Lieutenant (120 XP): One creature of party level + 2, one creature of party level
-3Elite Enemies (120 XP): Three creatures of party level
-5Lieutenant and Lackeys (80 XP): One creature of party level, four creatures of party level – 4
-2Mated Pair (80 XP): Two creatures of party level
-3Troop (80 XP): One creature of party level, two creatures of party level – 2
-1Solo Boss(80 XP): one creature of party level + 2
-4Squad(80XP): Four creatures of party level - 2
-4Scouting Patrol(80XP):one creature of party level -1, one creature of party level -2, two creatures of party level -3
-6Mook Squad (60 XP): Six creatures of party level – 4
-3Scouting Party(60XP): One creature of party level - 1, two creatures of party level - 3
-3Hunting party(60XP): Three creatures of party level -2
-"""
-
+enviroments = ("any", "aquatic", "desert", "extraplaner", "forest", "hills", "jungle", "mountains", "plains", "swamp", "tundra", "underground", "urban")
+families = ("aberration", "animal", "asteral", "beast", "celestial", "construct", "dragon", "dream", "elemental", "ethereal", "fey", "fiend", "fungus", "giant", "humanoid", "monitor", "ooze", "petitioner", "plant", "shadow", "spirit", "time", "undead")
 
 
 """
-#use for party generation
-Creature Level	XP	Suggested Role
-Party Level -4	10	Low-threat lackey
-Party Level -3	15	Low- or moderate-threat lackey
-Party Level -2	20	Any lackey or standard creature
-Party Level -1	30	Any standard creature
-Party Level	40	Any standard creature or low-threat boss
-Party Level +1	60	Low- or moderate-threat boss
-Party Level +2	80	Moderate- or severe-threat boss
-Party Level +3	120	Severe- or extreme-threat boss
-Party Level +4	160	Extreme-threat solo boss
-"""
 
-
-"""
 #use for loot generation
 Level	Total Treasure per Level	Low	Moderate	Severe	Extreme	Extra Treasure
 1	175 gp	13 gp	18 gp	26 gp	35 gp	35 gp
@@ -186,4 +234,26 @@ Level	Total Treasure per Level	Low	Moderate	Severe	Extreme	Extra Treasure
 18	208,000 gp	15,600 gp	20,800 gp	31,200 gp	41,600 gp	41,600 gp
 19	355,000 gp	26,600 gp	35,500 gp	53,250 gp	71,000 gp	71,000 gp
 20	490,000 gp	36,800 gp	49,000 gp	73,500 gp	98,000 gp	98,000 gp
+
+1, 175
+10, 8000
+20, 490000
+
+1(490000-8000)+175(10-20)+(20*8000-10*490000)
+---------------------------------------------
+(1-10)(1-20)(10-20)
+
+-4259750
+--------   
+-1710		
+
+	NO GOOD FUNCTION... easier to insert full chart	
+
+
+#trivial 0, 
+#low is 7.5% round up, 
+#moderate is 10%
+#severe is 15%
+#extreme is 20%
+
 """

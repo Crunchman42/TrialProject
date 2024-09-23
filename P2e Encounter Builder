@@ -1,7 +1,7 @@
-#"working" but only run once... need to find where things are mucking up on reruns.
+#"working" but only run once... need to find where things are mucking up on reruns. 
 
 import random
-
+#list of monsters... need to figure out how to import from another file... kinda mucking things up
 class monster:
 	def __init__(self, name, size, terrain, family, type, CR):
 		self.name = name
@@ -12,57 +12,495 @@ class monster:
 		self.CR = CR
 		
 mVampBatSwarm = monster("Vampire bat swarm", "large", "any", "animal", "bat", 1)
+mEVampBatSwarm = monster("Elite Vampire bat swarm", "large", "any", "animal", "bat", 2)
+mVWampBatSwarm = monster("Weak Vampire bat swarm", "large", "any", "animal", "bat", -1)
+malbinoGiantBat = monster("Albino Giant Bat", "large", "forest", "animal", "bat", 5)
+mEalbinoGiantBat = monster("Elite Albino Giant Bat", "large", "forest", "animal", "bat", 6)
+mWalbinoGiantBat = monster("Weak Albino Giant Bat", "large", "forest", "animal", "bat", 4)
 mCaveBear = monster("Cavebear", "large", "any", "animal", "bear", 6)
-mCentipedeSwarm = monster("Centipede swarm", "large", "any", "animal", "centipede", 3)
-mGiantCentipede = monster("Giant Centipede", "medium", "any", "animal", "centipede", -1)
+mECaveBear = monster("Elite Cavebear", "large", "any", "animal", "bear", 7)
+mWCaveBear = monster("Weak Cavebear", "large", "any", "animal", "bear", 5)
+mCentipedeSwarm = monster("Centipede swarm", "large", "any", "animal", "bug", 3)
+mECentipedeSwarm = monster("Elite Centipede swarm", "large", "any", "animal", "bug", 4)
+mWCentipedeSwarm = monster("Weak Centipede swarm", "large", "any", "animal", "bug", 2)
+mGiantCentipede = monster("Giant Centipede", "medium", "any", "animal", "bug", -1)
+mEGiantCentipede = monster("Elite Giant Centipede", "medium", "any", "animal", "bug", 1)
+mWGiantCentipede = monster("Weak Giant Centipede", "medium", "any", "animal", "bug", -2)
 mGuardDog = monster("Guard Dog", "small", "any", "animal", "dog", -1)
-mRidingDog = monster("Riding Dog", "medium", "any", "animal", "dog", 1)
-mRidingHorse = monster("Riding Horse", "large", "any", "animal", "horse", 1)
-mWarPony = monster("War Pony", "medium", "any", "animal", "horse", 1)
+mRidingDog = monster("Riding Dog", "medium", "any", "animal", "mount", 1)
+mRidingHorse = monster("Riding Horse", "large", "any", "animal", "mount", 1)
+mWarPony = monster("War Pony", "medium", "any", "animal", "mount", 1)
 mGiantGecko = monster("Giant Gecko", "medium", "any", "animal", "lizard", 1)
-mHuntingSpider = ("Hunting Spider", "medium", "any", "animal", "spider", 1)
-mSpiderSwarm = monster("Spider swarm", "large", "any", "animal", "spider", 0)
-mGiantTarantula = monster("Giant Tarantula", "large", "any", "animal", "spider", 6)
-mGiantAnt = monster("Giant ant", "medium", "any", "animal", "ant", 2)
-mGiantWhiptailCentipede = monster("Giant Whiptail Centipede", "huge", "any", "animal", "centipede", 3)
-mTitanCentipede = monster("Titan centipede", "gargantuan", "any", "animal", "centipede", 9)
-mCockroachSwarm = monster("Cockroach swarm", "large", "any", "animal", "cocroach", 2)
-mGiantCockroach = monster("Giant cockroach", "small", "any", "animal", "cocroach", 1)
-mGiantFly = monster("Giant fly", "medium", "any", "animal", "fly", 1)
-mGiantMaggot = monster("Giant maggot", "medium", "any", "animal", "fly", 0)
-mGiantMosquito = monster("Giant mosquito", "medium", "any", "animal", "mosquito", 6)
+mEGiantGecko = monster("Elite Giant Gecko", "medium", "any", "animal", "lizard", 2)
+mWGiantGecko = monster("Weak Giant Gecko", "medium", "any", "animal", "lizard", -1)
+mHuntingSpider = monster("Hunting Spider", "medium", "any", "animal", "bug", 1)
+mOgreSpider = monster("Ogre Spider", "huge", "any", "animal", "bug", 5)
+mEOgreSpider = monster("Elite Ogre Spider", "huge", "any", "animal", "bug", 6)
+mWOgreSpider = monster("Weak Ogre Spider", "huge", "any", "animal", "bug", 4)
+mEHuntingSpider = monster("Elite Hunting Spider", "medium", "any", "animal", "bug", 2)
+mTrapdoorOgreSpider = monster("Trapdoor Ogre Spider", "huge", "any", "animal", "bug", 5)
+mETrapdoorOgreSpider = monster("Elite Trapdoor Ogre Spider", "huge", "any", "animal", "bug", 6)
+mWTrapdoorOgreSpider = monster("Weak Trapdoor Ogre Spider", "huge", "any", "animal", "bug", 4)
+mWHuntingSpider = monster("Weak Hunting Spider", "medium", "any", "animal", "bug", -1)
+mSpiderSwarm = monster("Spider swarm", "large", "any", "animal", "bug", 0)
+mESpiderSwarm = monster("Elite Spider swarm", "large", "any", "animal", "bug", 2)
+mWSpiderSwarm = monster("Weak Spider swarm", "large", "any", "animal", "bug", -1)
+mEGiantTarantula = monster("Elite Giant Tarantula", "large", "any", "animal", "bug", 7)
+mGiantTrapdoorSpider = monster("Giant Trapdoor Spider", "medium", "desert", "animal", "bug", 2)
+mEGiantTrapdoorSpider = monster("Giant Trapdoor Spider", "medium", "desert", "animal", "bug", 3)
+mWGiantTrapdoorSpider = monster("Giant Trapdoor Spider", "medium", "desert", "animal", "bug", 1)
+mWGiantTarantula = monster("Weak Giant Tarantula", "large", "any", "animal", "bug", 5)
+mGiantTarantula = monster("Giant Tarantula", "large", "any", "animal", "bug", 6)
+mGiantAnt = monster("Giant ant", "medium", "any", "animal", "bug", 2)
+mEGiantAnt = monster("Elite Giant ant", "medium", "any", "animal", "bug", 3)
+mWGiantAnt = monster("Weak Giant ant", "medium", "any", "animal", "bug", 1)
+mGiantWhiptailCentipede = monster("Giant Whiptail Centipede", "huge", "any", "animal", "bug", 3)
+mEGiantWhiptailCentipede = monster("Elite Giant Whiptail Centipede", "huge", "any", "animal", "bug", 4)
+mWGiantWhiptailCentipede = monster("Weak Giant Whiptail Centipede", "huge", "any", "animal", "bug", 2)
+mTitanCentipede = monster("Titan centipede", "gargantuan", "any", "animal", "bug", 9)
+mETitanCentipede = monster("Elite Titan centipede", "gargantuan", "any", "animal", "bug", 10)
+mWTitanCentipede = monster("Weak Titan centipede", "gargantuan", "any", "animal", "bug", 8)
+mGiantCockroach = monster("Giant cockroach", "small", "any", "animal", "bug", 1)
+mEGiantCockroach = monster("Elite Giant cockroach", "small", "any", "animal", "bug", 2)
+mWGiantCockroach = monster("Weak Giant cockroach", "small", "any", "animal", "bug", -1)
+mGiantFly = monster("Giant fly", "medium", "any", "animal", "bug", 1)
+mEGiantFly = monster("Elite Giant fly", "medium", "any", "animal", "bug", 2)
+mWGiantFly = monster("Weak Giant fly", "medium", "any", "animal", "bug", 0)
+mGiantMaggot = monster("Giant maggot", "medium", "any", "animal", "bug", 0)
+mEGiantMaggot = monster("Elite Giant maggot", "medium", "any", "animal", "bug", 1)
+mWGiantMaggot = monster("Weak Giant maggot", "medium", "any", "animal", "bug", -1)
+mGiantMosquito = monster("Giant mosquito", "medium", "any", "animal", "bug", 6)
+mEGiantMosquito = monster("Elite Giant mosquito", "medium", "any", "animal", "bug", 7)
+mWGiantMosquito = monster("Weak Giant mosquito", "medium", "any", "animal", "bug", 5)
 mRaven = monster("Raven", "tiny", "any", "animal", "raven", -1)
+mERaven = monster("Elite Raven", "tiny", "any", "animal", "raven", 1)
+mWRaven = monster("Weak Raven", "tiny", "any", "animal", "raven", -2)
 mRavenSwarm = monster("Raven swarm", "large", "any", "animal", "raven", 3)
-mGiantSlug = monster("Giant slug", "Huge", "any", "animal", "slug", 8)
-mSportleboreSwarm = monster("Sportlebore swarm", "large", "any", "animal", "sportlebore", 7)
-mGiantTick = monster("Giant tick", "small", "any", "animal", "tick", 1)
-mTickSwarm = monster("Tick swarm", "large", "any", "animal", "tick", 9)
+mGiantSlug = monster("Giant slug", "Huge", "any", "animal", "bug", 8)
+mEGiantSlug = monster("Elite Giant slug", "Huge", "any", "animal", "bug", 9)
+mWGiantSlug = monster("Weak Giant slug", "Huge", "any", "animal", "bug", 7)
+mESportleboreSwarm = monster("Elite Sportlebore swarm", "large", "any", "animal", "bug", 8)
+mWSportleboreSwarm = monster("Weak Sportlebore swarm", "large", "any", "animal", "bug", 6)
+mSportleboreSwarm = monster("Sportlebore swarm", "large", "any", "animal", "bug", 7)
+mGiantTick = monster("Giant tick", "small", "any", "animal", "bug", 1)
+mEGiantTick = monster("Elite Giant tick", "small", "any", "animal", "bug", 2)
+mWGiantTick = monster("Weak Giant tick", "small", "any", "animal", "bug", 0)
+mTickSwarm = monster("Tick swarm", "large", "any", "animal", "bug", 9)
+mETickSwarm = monster("Elite Tick swarm", "large", "any", "animal", "bug", 10)
+mWTickSwarm = monster("Weak Tick swarm", "large", "any", "animal", "bug", 8)
 mFadingFox = monster("Fading fox", "tiny", "any", "animal", "fox", 2)
+mEFadingFox = monster("Elite Fading fox", "tiny", "any", "animal", "fox", 3)
+mWFadingFox = monster("Weak Fading fox", "tiny", "any", "animal", "fox", 1)
 mRedFox = monster("Red fox", "tiny", "any", "animal", "fox", -1)
+mERedFox = monster("Elite Red fox", "tiny", "any", "animal", "fox", 1)
+mWRedFox = monster("Weak Red fox", "tiny", "any", "animal", "fox", -2)
 mViperSwarm = monster("Viper swarm", "large", "any", "animal", "snake", 4)
+mEViperSwarm = monster("Elite Viper swarm", "large", "any", "animal", "snake", 5)
+mWViperSwarm = monster("Weak Viper swarm", "large", "any", "animal", "snake", 4)
 mMegalictus = monster("Megalictus", "medium", "any", "animal", "weasel", 3)
+mEMegalictus = monster("Elite Megalictus", "medium", "any", "animal", "weasel", 4)
+mWMegalictus = monster("Weak Megalictus", "medium", "any", "animal", "weasel", 2)
 mWeasel = monster("Weasel", "tiny", "any", "animal", "weasel", -1)
+mEWeasel = monster("Elite Weasel", "tiny", "any", "animal", "weasel", 1)
+mWWeasel = monster("Weak Weasel", "tiny", "any", "animal", "weasel", -2)
+mBunyip = monster("Bunyip", "medium", "aquatic", "animal", "bunyip", 3)
+mEBunyip = monster("Elite Bunyip", "medium", "aquatic", "animal", "bunyip", 4)
+mWBunyip = monster("WeakBunyip", "medium", "aquatic", "animal", "bunyip", 2)
+mElectricEel = monster("Electric eel", "small", "aquatic", "animal", "eel", 1)
+mEElectricEel = monster("Elite Electric eel", "small", "aquatic", "animal", "eel", 2)
+mWElectricEel = monster("Weak Electric eel", "small", "aquatic", "animal", "eel", -1)
+mGiantMorayEel = monster("Giant moray eel", "large", "aquatic", "animal", "eel", 5)		
+mGiantOctopus = monster("Giant octopus", "huge", "aquatic", "animal", "octopus", 8)			
+mSeaSerpent = monster("Sea serpent", "gargantuan", "aquatic", "animal", "serpent", 12)
+mGreatWhiteShark = monster("Great white shark", "large", "aquatic", "animal", "shark", 4)
+mEGiantMorayEel = monster("Elite Giant moray eel", "large", "aquatic", "animal", "eel", 6)		
+mEGiantOctopus = monster("Elite Giant octopus", "huge", "aquatic", "animal", "octopus", 9)			
+mESeaSerpent = monster("Elite Sea serpent", "gargantuan", "aquatic", "animal", "serpent", 13)
+mEGreatWhiteShark = monster("Elite Great white shark", "large", "aquatic", "animal", "shark", 5)
+mWGiantMorayEel = monster("Weak Giant moray eel", "large", "aquatic", "animal", "eel", 4)		
+mWGiantOctopus = monster("Weak Giant octopus", "huge", "aquatic", "animal", "octopus", 7)			
+mWSeaSerpent = monster("Weak Sea serpent", "gargantuan", "aquatic", "animal", "serpent", 11)
+mWGreatWhiteShark = monster("Weak Great white shark", "large", "aquatic", "animal", "shark", 3)
 
+
+
+
+mMegalodon = monster("Megalodon", "gargantuan", "aquatic", "animal", "shark", 9)
+mGoblinShark = monster("Goblin Shark", "large", "aquatic", "animal", "shark", 5)
+mGiantCrab = monster("Giant crab", "medium", "aquatic", "animal", "crab", 2)
+mSpinosaurus = monster("Spinosaurus", "gargantuan", "amphibious", "animal", "dino", 11)
+mBottlenoseDolphin = monster("Bottlenose dolphin", "medium", "aquatic", "animal", "dolphin", 0)
+mOrca = monster("Orca", "huge", "aquatic", "animal", "dolphin", 5)
+mElasmosaurus = monster("Elasmosaurus", "huge", "aquatic", "animal", "mosasaur", 7)
+mGiantHippocampus = monster("Giant hippocampus", "huge", "aquatic", "animal", "hippocampus", 8)	
+mHippocampus = monster("Hippocampus", "large", "aquatic", "animal", "hippocampus", 5)	
+mBehemothHippo = monster("Behemoth hippopotamus", "huge", "amphibious", "animal", "hippo", 10)
+mHippo = monster("Hippopotamus", "large", "amphibious", "animal", "hippo", 5)
+mFireJellyfishSwarm = monster("Fire jellyfish swarm", "large", "aquatic", "animal", "jellyfish", 6)
+mGiantJellyfish = monster("Giant jellyfish", "large", "aquatic", "animal", "jellyfish", 7)
+mBlueRingedOctopus = monster("Blue–ringed octopus", "tiny", "aquatic", "animal", "octopus", 1)
+mReefOctopus = monster("Reef octopus", "small", "aquatic", "animal", "octopus", 1)			
+mMantaRay = monster("Manta ray", "large", "aquatic", "animal", "ray", 1)
+mStingray = monster("Stingray", "medium", "aquatic", "animal", "ray", 0)
+mSeaSnake = monster("Sea snake", "small", "amphibious", "animal", "snake", 0)
+mGiantSquid = monster("Giant squid", "huge", "aquatic", "animal", "squid", 9)
+mVampireSquid = monster("Vampire squid", "small", "aquatic", "animal", "squid", 0)
+mSnappingTurtle = ("Snapping turtle", "tiny", "amphibious", "animal", "turtle", -1)
+mGiantHermitCrab = monster("Giant hermit crab", "large", "amphibious", "animal", "crab", 5)
+mHermitCrabSwarm = monster("Hermit crab swarm", "large", "amphibious", "animal", "crab", 4)
+mCommonEurypterid = monster("Common eurypterid", "medium", "amphibious", "animal", "eurypterid", -1)
+mSpinyEurypterid = monster("Spiny eurypterid", "large", "aquatic", "animal", "eurypterid", 5)
+mPiranhaSwarm = monster("Piranha swarm", "large", "amphibious", "animal", "fish", 3)
+mPufferfish = monster("Pufferfish", "tiny", "aquatic", "animal", "fish", -1)
+mPlatecarpus = monster("Platecarpus", "large", "aquatic", "animal", "mosasaur", 3)
+mTylosaurus = monster("Tylosaurus", "gargantuan", "aquatic", "animal", "mosasaur", 8)
+mFantoothSchool = monster("Fantooth School", "large", "aquatic", "animal", "fish", 3)
+mStonefish = monster("Stonefish", "tiny", "aquatic", "animal", "fish", 0)
+mStonefishSwarm = monster("Stonefish swarm", "large", "aquatic", "animal", "fish", 2)
+mSwordfish = monster("Swordfish", "large", "aquatic", "animal", "fish", 3)
+mNarwhal = monster("Narwhal", "large", "aquatic", "animal", "dolphin", 3)
+mGiantSeahorse = monster("Giant seahorse", "large", "aquatic", "animal", "seahorse", 3)
+mTrilobite = monster("Trilobite", "tiny", "aquatic", "animal", "crab", -1)
+mTrilobiteSwarm = monster("Trilobite swarm", "large", "aquatic", "animal", "crab", 3)
+
+
+
+mGiantScorpion = monster("Giant scorpion", "large", "desert", "animal", "bug", 3)
+mScorpionSwarm = monster("Scorpion swarm", "large", "desert", "animal", "bug", 4)
+mBlackScorpion = monster("Black scorpion", "gargantuan", "desert", "animal", "bug", 15)
+mDuneshakerSolifugid = monster("Duneshaker solifugid", "gargantuan", "desert", "animal", "solifugid", 18)
+mGiantSolifugid = monster("Giant solifugid", "large", "desert", "animal", "solifugid", 1)
+mGiantToad = monster("Giant toad", "large", "desert", "animal", "toad", 2)
+mCamel = monster("Camel", "large", "desert", "animal", "camel", 1)
+mGiantVulture = monster("Giant vulture", "large", "desert", "animal", "bird", 3)
+mEGiantScorpion = monster("EliteGiant scorpion", "large", "desert", "animal", "bug", 4)
+mEScorpionSwarm = monster("Elite Scorpion swarm", "large", "desert", "animal", "bug", 5)
+mEBlackScorpion = monster("Elite Black scorpion", "gargantuan", "desert", "animal", "bug", 16)
+mEDuneshakerSolifugid = monster("Elite Duneshaker solifugid", "gargantuan", "desert", "animal", "solifugid", 19)
+mEGiantSolifugid = monster("Elite Giant solifugid", "large", "desert", "animal", "solifugid", 2)
+mEGiantToad = monster("Elite Giant toad", "large", "desert", "animal", "toad", 3)
+mEGiantVulture = monster("Elite Giant vulture", "large", "desert", "animal", "bird", 4)
+mWGiantScorpion = monster("Weak Giant scorpion", "large", "desert", "animal", "bug", 2)
+mWScorpionSwarm = monster("Weak Scorpion swarm", "large", "desert", "animal", "bug", 3)
+mWBlackScorpion = monster("Weak Black scorpion", "gargantuan", "desert", "animal", "bug", 14)
+mWDuneshakerSolifugid = monster("Weak Duneshaker solifugid", "gargantuan", "desert", "animal", "solifugid", 17)
+mWGiantSolifugid = monster("Weak Giant solifugid", "large", "desert", "animal", "solifugid", -1)
+mWGiantToad = monster("Weak Giant toad", "large", "desert", "animal", "toad", 1)
+mWGiantVulture = monster("Weak Giant vulture", "large", "desert", "animal", "bird", 2)
+mGrizzlyBear = monster("Grizzly bear", "large", "forest", "animal", "bear", 3)
+mBoar = monster("Boar", "medium", "forest", "animal", "boar", 2)
+mDeinonychus = monster("Deinonychus", "medium", "forest", "animal", "dino", 2)
+mVelociraptor = monster("Velociraptor", "small", "forest", "animal", "dino", 1)
+mMammoth = monster("Mammoth", "huge", "forest", "animal", "elephant", 10)
+mGoblinDog = monster("Goblin dog", "medium", "forest", "animal", "goblin", 1)
+mGiantFrilledLizard = monster("Giant frilled lizard", "large", "forest", "animal", "lizard", 5)
+mGiantMantis = monster("Giant mantis", "large", "forest", "animal", "mantis", 3)
+mDeadlyMantis = monster("Deadly mantis", "gargantuan", "forest", "animal", "mantis", 11)
+mViper = monster("Viper", "tiny", "forest", "animal", "snake", -1)
+mGiantViper = monster("Giant viper", "medium", "forest", "animal", "snake", 2)
+mGiantWasp = monster("Giant wasp", "large", "forest", "animal", "bug", 3)
+mWaspSwarm = monster("Wasp swarm", "large", "forest", "animal", "bug", 4)
+mArmyAntSwarm = monster("Army ant swarm", "large", "forest", "animal", "bug", 5)
+mBadger = monster("Badger", "small", "forest", "animal", "badger", 0)
+mGiantBadger = monster("Giant Badger", "medium", "forest", "animal", "badger", 2)
+mBlackBear = monster("Black bear", "large", "forest", "animal", "bear", 2)
+mHadrosaurid = monster("Hadrosaurid", "huge", "forest", "animal", "dino", 4)
+mMastodon = monster("Mastodon", "huge", "forest", "animal", "elephant", 9)
+mGiantWolverine = monster("Giant wolverine", "large", "forest", "animal", "wolverine", 4)
+mWolverine = monster("Wolverine", "medium", "forest", "animal", "wolverine", 2)
+mGiantOppossum = monster("Giant opossum", "large", "forest", "animal", "oppossum", 2)
+mKhravgodon = monster("Khravgodon", "huge", "forest", "animal", "oppossum", 9)
+mGiantPorcupine = monster("Giant porcupine", "medium", "forest", "animal", "porcupine", 2)
+mGiantSkunk = monster("Giant skunk", "large", "forest", "animal", "skunk", 1)
+mSkunk = monster("Skunk", "tiny", "forest", "animal", "skunk", -1)
+mGiantFlyingSquirrel= monster("Giant flying squirrel", "small", "forest", "animal", "squirrel", 2)
+mSquirrelSwarm = monster("Squirrel swarm", "large", "forest", "animal", "squirrel", 1)
+mEGrizzlyBear = monster("Elite Grizzly bear", "large", "forest", "animal", "bear", 4)
+mEBoar = monster("Elite Boar", "medium", "forest", "animal", "boar", 3)
+mEDeinonychus = monster("Elite Deinonychus", "medium", "forest", "animal", "dino", 3)
+mEVelociraptor = monster("Elite Velociraptor", "small", "forest", "animal", "dino", 2)
+mEMammoth = monster("Elite Mammoth", "huge", "forest", "animal", "elephant", 11)
+mEGoblinDog = monster("Elite Goblin dog", "medium", "forest", "animal", "goblin", 2)
+mEGiantFrilledLizard = monster("Elite Giant frilled lizard", "large", "forest", "animal", "lizard", 6)
+mEGiantMantis = monster("Elite Giant mantis", "large", "forest", "animal", "mantis", 4)
+mEDeadlyMantis = monster("Elite Deadly mantis", "gargantuan", "forest", "animal", "mantis", 12)
+mEViper = monster("Elite Viper", "tiny", "forest", "animal", "snake", 1)
+mEGiantViper = monster("Elite Giant viper", "medium", "forest", "animal", "snake", 3)
+mEGiantWasp = monster("Elite Giant wasp", "large", "forest", "animal", "bug", 4)
+mEWaspSwarm = monster("Elite Wasp swarm", "large", "forest", "animal", "bug", 5)
+mEArmyAntSwarm = monster("Elite Army ant swarm", "large", "forest", "animal", "bug", 6)
+mEBadger = monster("Elite Badger", "small", "forest", "animal", "badger", 1)
+mEGiantBadger = monster("Elite Giant Badger", "medium", "forest", "animal", "badger", 3)
+mEBlackBear = monster("Elite Black bear", "large", "forest", "animal", "bear", 3)
+mEHadrosaurid = monster("Elite Hadrosaurid", "huge", "forest", "animal", "dino", 3)
+mEMastodon = monster("Elite Mastodon", "huge", "forest", "animal", "elephant", 10)
+mEGiantWolverine = monster("Elite Giant wolverine", "large", "forest", "animal", "wolverine", 5)
+mEWolverine = monster("Elite Wolverine", "medium", "forest", "animal", "wolverine", 3)
+mEGiantOppossum = monster("Elite Giant opossum", "large", "forest", "animal", "oppossum", 3)
+mEKhravgodon = monster("Elite Khravgodon", "huge", "forest", "animal", "oppossum", 10)
+mEGiantPorcupine = monster("Elite Giant porcupine", "medium", "forest", "animal", "porcupine", 3)
+mEGiantSkunk = monster("Elite Giant skunk", "large", "forest", "animal", "skunk", 2)
+mESkunk = monster("Elite Skunk", "tiny", "forest", "animal", "skunk", 1)
+mEGiantFlyingSquirrel= monster("Elite Giant flying squirrel", "small", "forest", "animal", "squirrel", 3)
+mESquirrelSwarm = monster("Elite Squirrel swarm", "large", "forest", "animal", "squirrel", 2)
+mWGrizzlyBear = monster("Weak Grizzly bear", "large", "forest", "animal", "bear", 2)
+mWBoar = monster("Weak Boar", "medium", "forest", "animal", "boar", 1)
+mWDeinonychus = monster("Weak Deinonychus", "medium", "forest", "animal", "dino", 1)
+mWVelociraptor = monster("Weak Velociraptor", "small", "forest", "animal", "dino", -1)
+mWMammoth = monster("Weak Mammoth", "huge", "forest", "animal", "elephant", 9)
+mWGoblinDog = monster("Weak Goblin dog", "medium", "forest", "animal", "goblin", -1)
+mWGiantFrilledLizard = monster("Weak Giant frilled lizard", "large", "forest", "animal", "lizard", 4)
+mWGiantMantis = monster("Weak Giant mantis", "large", "forest", "animal", "mantis", 2)
+mWDeadlyMantis = monster("Weak Deadly mantis", "gargantuan", "forest", "animal", "mantis", 10)
+mWViper = monster("Weak Viper", "tiny", "forest", "animal", "snake", -2)
+mWGiantViper = monster("Weak Giant viper", "medium", "forest", "animal", "snake", 1)
+mWGiantWasp = monster("Weak Giant wasp", "large", "forest", "animal", "bug", 2)
+mWWaspSwarm = monster("Weak Wasp swarm", "large", "forest", "animal", "bug", 3)
+mWArmyAntSwarm = monster("Weak Army ant swarm", "large", "forest", "animal", "bug", 4)
+mWBadger = monster("Weak Badger", "small", "forest", "animal", "badger", -2)
+mWGiantBadger = monster("Weak Giant Badger", "medium", "forest", "animal", "badger", 1)
+mWBlackBear = monster("Weak Black bear", "large", "forest", "animal", "bear", 1)
+mWHadrosaurid = monster("Weak Hadrosaurid", "huge", "forest", "animal", "dino", 3)
+mWMastodon = monster("Weak Mastodon", "huge", "forest", "animal", "elephant", 8)
+mWGiantWolverine = monster("Weak Giant wolverine", "large", "forest", "animal", "wolverine", 3)
+mWWolverine = monster("Weak Wolverine", "medium", "forest", "animal", "wolverine", 1)
+mWGiantOppossum = monster("Weak Giant opossum", "large", "forest", "animal", "oppossum", 1)
+mWKhravgodon = monster("Weak Khravgodon", "huge", "forest", "animal", "oppossum", 8)
+mWGiantPorcupine = monster("Weak Giant porcupine", "medium", "forest", "animal", "porcupine", 1)
+mWGiantSkunk = monster("Weak Giant skunk", "large", "forest", "animal", "skunk", -1)
+mWSkunk = monster("Weak Skunk", "tiny", "forest", "animal", "skunk", -2)
+mWGiantFlyingSquirrel= monster("Weak Giant flying squirrel", "small", "forest", "animal", "squirrel", 1)
+mWSquirrelSwarm = monster("Weak Squirrel swarm", "large", "forest", "animal", "squirrel", -1)
+mGorilla = monster("Gorilla", "large", "jungle", "animal", "ape", 3)
+mMegaprimatus = monster("gorilla", "gargantuan", "jungle", "animal", "ape", 8)
+mLeopard = monster("Leopard", "medium", "jungle", "animal", "cat", 2)
+mTiger = monster("Tiger", "large", "jungle", "animal", "cat", 4)
+mBrontosaurus = monster("Brontosaurus", "gargantuan", "jungle", "animal", "dino", 10)
+mGiantMonitorLizard = monster("Giant Monitor Lizard", "medium", "jungle", "animal", "lizard", 2)
+mDeadlyMantis = monster("Deadly Mantis", "gargantuan", "jungle", "animal", "bug", 11)			
+mPteranodon = monster("Pteranodon", "large", "jungle", "animal", "dino", 2)
+mQuetzalcoatlus = monster("Quetzalcoatlus", "huge", "jungle", "animal", "dino", 7)
+mPython = monster("Python", "medium", "jungle", "animal", "snake", 1)
+mGiantAnaconda = monster("Giant Anaconda", "huge", "jungle", "animal", "snake", 8)
+mGoliathSpider = monster("Goliath Spider", "gargantuan", "jungle", "animal", "bug", 11)
+mEGoliathSpider = monster("Goliath Spider", "gargantuan", "jungle", "animal", "bug", 12)
+mGoliathSpider = monster("Goliath Spider", "gargantuan", "jungle", "animal", "bug", 10)
+mGiantChameleon = monster("Giant Chameleon", "large", "jungle", "animal", "lizard", 3)
+mDreamSpider = monster("Dream spider", "small", "jungle", "animal", "bug", 0)
+mEDreamSpider = monster("Elite Dream spider", "small", "jungle", "animal", "bug", 2)
+mWDreamSpider = monster("Weak Dream Spider", "small", "jungle", "animal", "bug", -1)
+mMokeleMbembe = monster("Mokele-mbembe", "huge", "jungle", "animal", "lizard", 9)
+mMonkey = monster("Monkey", "tiny", "jungle", "animal", "monkey", -1)
+mMonkeySwarm = monster("MonkeySwarm", "large", "jungle", "animal", "monkey", 2)
+mGiantPangolin = monster("Giant Pangolin", "large", "jungle", "animal", "pangolin", 4)
+mMegatherium = monster("Megatherium", "huge", "jungle", "animal", "sloth", 5)
+mThreeToedSloth = monster("Three-toed sloth", "tiny", "jungle", "animal", "sloth", -1)
+mEGorilla = monster("Elite Gorilla", "large", "jungle", "animal", "ape", 4)
+mEMegaprimatus = monster("Elite gorilla", "gargantuan", "jungle", "animal", "ape", 9)
+mELeopard = monster("Elite Leopard", "medium", "jungle", "animal", "cat", 3)
+mETiger = monster("Elite Tiger", "large", "jungle", "animal", "cat", 5)
+mEBrontosaurus = monster("Elite Brontosaurus", "gargantuan", "jungle", "animal", "dino", 11)
+mEGiantMonitorLizard = monster("Elite Giant Monitor Lizard", "medium", "jungle", "animal", "lizard", 3)
+mEDeadlyMantis = monster("Elite Deadly Mantis", "gargantuan", "jungle", "animal", "bug", 12)			
+mEPteranodon = monster("Elite Pteranodon", "large", "jungle", "animal", "dino", 3)
+mEQuetzalcoatlus = monster("Elite Quetzalcoatlus", "huge", "jungle", "animal", "dino", 8)
+mEPython = monster("Elite Python", "medium", "jungle", "animal", "snake", 2)
+mEGiantAnaconda = monster("Elite Giant Anaconda", "huge", "jungle", "animal", "snake", 9)
+mEGiantChameleon = monster("Elite Giant Chameleon", "large", "jungle", "animal", "lizard", 4)
+mEMokeleMbembe = monster("Elite Mokele-mbembe", "huge", "jungle", "animal", "lizard", 10)
+mEMonkey = monster("Elite Monkey", "tiny", "jungle", "animal", "monkey", 1)
+mEMonkeySwarm = monster("Elite MonkeySwarm", "large", "jungle", "animal", "monkey", 3)
+mEGiantPangolin = monster("Elite Giant Pangolin", "large", "jungle", "animal", "pangolin", 5)
+mEMegatherium = monster("Elite Megatherium", "huge", "jungle", "animal", "sloth", 6)
+mEThreeToedSloth = monster("Elite Three-toed sloth", "tiny", "jungle", "animal", "sloth", 1)
+mWGorilla = monster("Weak Gorilla", "large", "jungle", "animal", "ape", 2)
+mWMegaprimatus = monster("Weak gorilla", "gargantuan", "jungle", "animal", "ape", 7)
+mWLeopard = monster("Weak Leopard", "medium", "jungle", "animal", "cat", 1)
+mWTiger = monster("Weak Tiger", "large", "jungle", "animal", "cat", 3)
+mWBrontosaurus = monster("Weak Brontosaurus", "gargantuan", "jungle", "animal", "dino", 9)
+mWGiantMonitorLizard = monster("Weak Giant Monitor Lizard", "medium", "jungle", "animal", "lizard", 1)
+mWDeadlyMantis = monster("Weak Deadly Mantis", "gargantuan", "jungle", "animal", "bug", 10)			
+mWPteranodon = monster("Weak Pteranodon", "large", "jungle", "animal", "dino", 1)
+mWQuetzalcoatlus = monster("Weak Quetzalcoatlus", "huge", "jungle", "animal", "dino", 6)
+mWPython = monster("Weak Python", "medium", "jungle", "animal", "snake", -1)
+mWGiantAnaconda = monster("Weak Giant Anaconda", "huge", "jungle", "animal", "snake", 7)
+mWGiantChameleon = monster("Weak Giant Chameleon", "large", "jungle", "animal", "lizard", 2)
+mWMokeleMbembe = monster("Weak Mokele-mbembe", "huge", "jungle", "animal", "lizard", 8)
+mWMonkey = monster("Weak Monkey", "tiny", "jungle", "animal", "monkey", -2)
+mWMonkeySwarm = monster("Weak MonkeySwarm", "large", "jungle", "animal", "monkey", 1)
+mWGiantPangolin = monster("Weak Giant Pangolin", "large", "jungle", "animal", "pangolin", 3)
+mWMegatherium = monster("Weak Megatherium", "huge", "jungle", "animal", "sloth", 4)
+WThreeToedSloth = monster("Weak Three-toed sloth", "tiny", "jungle", "animal", "sloth", -2)
+mDaeodon = monster("Daeodon", "large", "mountains", "animal", "boar", 4)
+mEagle = monster("Eagle", "small", "mountains", "animal", "bird", -1)
+mRoc = monster("Roc", "gargantuan", "mountains", "animal", "bird", 9)
+mRosethornRam = monster("Rosethorn Ram", "medium", "mountains", "animal", "Ram", 2)
+mWolliped = monster("Wolliped", "large", "mountains", "animal", "wolliped", 3)
+mZetogeki = monster("Zetogeki", "large", "mountains", "animal", "lizard", 7)
+mAnkhrav = monster("Ankhrav", "large", "plains", "animal", "ankhrav", 3)
+mEDaeodon = monster("Elite Daeodon", "large", "mountains", "animal", "boar", 5)
+mEEagle = monster("Elite Eagle", "small", "mountains", "animal", "bird", 1)
+mERoc = monster("Elite Roc", "gargantuan", "mountains", "animal", "bird", 10)
+mERosethornRam = monster("Elite Rosethorn Ram", "medium", "mountains", "animal", "Ram", 3)
+mEWolliped = monster("Elite Wolliped", "large", "mountains", "animal", "wolliped", 4)
+mEZetogeki = monster("Elite Zetogeki", "large", "mountains", "animal", "lizard", 8)
+mEAnkhrav = monster("Elite Ankhrav", "large", "plains", "animal", "ankhrav", 4)
+mWDaeodon = monster("Weak Daeodon", "large", "mountains", "animal", "boar", 3)
+mWEagle = monster("Weak Eagle", "small", "mountains", "animal", "bird", -2)
+mWRoc = monster("Weak Roc", "gargantuan", "mountains", "animal", "bird", 8)
+mWRosethornRam = monster("Weak Rosethorn Ram", "medium", "mountains", "animal", "Ram", 1)
+mWWolliped = monster("Weak Wolliped", "large", "mountains", "animal", "wolliped", 2)
+mWZetogeki = monster("Weak Zetogeki", "large", "mountains", "animal", "lizard", 6)
+mWAnkhrav = monster("Weak Ankhrav", "large", "plains", "animal", "ankhrav", 2)
+
+
+
+
+
+mAnkhravHiveMother = monster("Ankhrav Hive Mother", "huge", "plains", "animal", "ankhrav", 8)
+mBulette = monster("Bulette", "huge", "plains", "animal", "bulette", 8)
+mLion = monster("Lion", "large", "plains", "animal", "cat", 3)
+mSmilodon = monster("smilodon", "large", "plains", "animal", "cat", 6)
+mStegosaurus = monster("Stegosaurus", "huge", "plains", "animal", "dino", 7)
+mTriceratops = monster("Triceratops", "huge", "plains", "animal", "dino", 8)
+mTyrannosaurus = monster("Tyrannosaurus", "gargantuan", "plains", "animal", "dino", 10)
+mElephant = monster("Elephant", "huge", "plains", "animal", "elephant", 7)
+mHyaenodon = monster("hyaenodon", "large", "plains", "animal", "hyena", 3)
+mHyena = monster("Hyena", "medium", "plains", "animal", "hyena", 1)
+mWolf = monster("Wolf", "medium", "plains", "animal", "wolf", 1)
+mCompsognathus = monster("Compsognathus", "tiny", "plains", "animal", "dino", -1)
+mPachycephalosaurus = monster("Pachycephalosaurus", "medium", "plains", "animal", "dino", 3)
+mAnancus = monster("Anacus", "huge", "plains", "animal", "elephant", 8)
+mMegalania = monster("Megalania", "huge", "plains", "animal", "lizard", 7)
+mRhinoceros = monster("Rhinoceros", "large", "plains", "animal", "rhino", 4)
+mBison = monster("Bison", "large", "plains", "animal", "bison", "4")
+mKangaroo = monster("Kangaroo", "medium", "plains", "animal", "kangaroo", 0)
+mRinghornRam = monster("Ringhorn Ram", "medium", "plains", "animal", "ram", 0)
+mTerrorBird = monster("Terror bird", "large", "plains", "animal", "bird", 2)
+mTerrorShrike = monster("Terror shrike", "large", "plains", "animal", "bird", 4)
+mYzobu = monster("Yzobu", "large", "plains", "animal", "yzobu", 1)
+
+
+mGiantStagBeetle = monster("Giant Stag Beetle", "large", "swamp", "animal", "bug", 4)
+mBloodseeker = monster("Bloodseeker", "tiny", "swamp", "animal", "bug", -1)
+mCrocodile = monster("Crocodile", "large", "swamp", "animal", "crocodile", 2)
+mDeinosuchus = monster("Deinosuchus", "huge", "swamp", "animal", "crocodile", 9)
+mKrooth = monster("Krooth", "large", "swamp", "animal", "krooth", 8)
+mIguanodon = monster("Iguanadon", "huge", "swamp", "animal", "lizard", 6)
+mGiantDragonfly = monster("Giant Dragonfly", "medium", "swamp", "animal", "bug", 4)
+mGiantDragonflyNymph = monster("Giant Dragonfly nymph", "tiny", "swamp", "animal", "bug", 3)
+mGiantFrog = monster("Giant Frog", "medium", "swamp", "animal", "frog", 1)
+mSpearFrog = monster("Spear Frog", "tiny", "swamp", "animal", "frog", 0)
+mBroodLeechSwarm = monster("Brood Leech swarm", "large", "swamp", "animal", "leech", 4)
+mGiantLeech = monster("Giant Leech", "medium", "swamp", "animal", "leech", 2)
+mFenMosquitoSwarm = monster("Fen Mosquito swarm", "large", "swamp", "animal", "bug", 3)
+mShockerLizard = monster("Shocker Lizard", "small", "swamp", "animal", "lizard", 2)
+mEmperorCobra = monster("Emperor cobra", "large", "swamp", "animal", "snake", 5)
+mGiantSnappingTurtle = monster("Giant Snapping Turtle", "gargantuan", "swamp", "animal", "turtle", 9)
+
+
+mPolarBear = monster("Polar bear", "large", "tundra", "animal", "bear", 5)
+mFrostWorm = monster("Frost Worm", "huge", "tundra", "animal", "worm", 12)
+mWoollyRhinoceros = monster("Wooly Rhinoceros", "large", "tundra", "animal", "rhinoceros", 5)
+mMoose = monster("Moose", "large", "tundra", "animal", "moose", 3)
+
+
+mGiantBat = monster("Giant Bat", "large", "underground", "animal", "bat", 2)
+mEGiantBat = monster("Elite Giant Bat", "large", "underground", "animal", "bat", 3)
+mWGiantBat = monster("Weak Giant Bat", "large", "underground", "animal", "bat", 2)
+mFlashBeetle = monster("Flash Beetle", "small", "underground", "animal", "bug", -1)
+mAzureWorm = monster("Azure worm", "gargantuan", "underground", "animal", "worm", 15)
+mJuvenileCaveWorm = monster("Juvenile Cave Worm", "large", "underground", "animal", "worm", 8)
+mLarvalCaveWormBrood = monster("Larval Cave Worm brood", "huge", "underground", "animal", "worm", 10)
+mCaveWorm = monster("Cave Worm", "gargantuan", "underground", "animal", "worm", 13)
+mSlurk = monster("Slurk", "medum", "underground", "animal", "frog", 2)
+mAurumvorax = monster("Aurumvorax", "small", "underground", "animal", "aurumvorax", 9)
+mBlindheim = monster("Blindheim", "small", "underground", "animal", "blindheim", 2)
+mCaveFisher = monster("Cave Fisher", "medium", "underground", "animal", "bug", 2)
+mCaveScorpion = monster("Cave Scorpion", "medium", "underground", "animal", "scorpion", 1)
+mBoreWormSwarm = monster("Bore Worm swarm", "large", "underground", "animal", "worm", 5)
+mEmpressBoreWorm = monster("Empress Bore Worm", "huge", "underground", "animal", "worm", 7)
+mRatSnakeSwarm = monster("Rat Snake swarm", "large", "underground", "animal", "snake", 2)
+
+
+mGiantRat = monster("Giant Rat", "small", "urban", "animal", "rat", -1)
+mRatSwarm = monster("Rat swarm", "large", "urban", "animal", "rat", 1)
+mBandit = monster("Bandit", "medium", "any", "npc", "humanoid", 2)
+mBurglar = monster("Burglar", "medium", "urban", "npc", "humanoid", 4)
+mCharlatan = monster("Charlatan", "medium", "urban", "npc", "humanoid", 3)
+mRuffian = monster("Ruffian", "medium", "urban", "npc", "humanoid", 2)
+mAssasin = monster("Assassin", "medium", "any", "npc", "humanoid", 8)
+mFence = monster("Fence", "medium", "urban", "npc", "humanoid", 5)
+mGraveRobber = monster("Grave Robber", "medium", "urban", "npc", "humanoid", 1)
+
+
+mDeepGnomeRockwarden = monster("Deep Gnome Rockwarden", "small", "underground", "npc", "humanoid", 5)
+mDeepGnomeScout = monster("Deep Gnome Scout", "small", "underground", "npc", "humanoid", 1)
+mDeepGnomeWarrior = monster("Deep Gnome Warrior", "small", "underground", "npc", "humanoid", 2)
+mBlackDragonAdult = monster("Adult Black Dragon", "large", "swamp", "dragon", "dragon", 11)
+mBlackDragonAncient = monster("Ancient Black Dragon", "huge", "swamp", "dragon", "dragon", 16)
+mBlackDragonYoung = monster("Young Black Dragon", "large", "swamp", "dragon", "dragon", 7)
+mBlueDragonAdult = monster("Adult Blue Dragon", "huge", "desert", "dragon", "dragon", 13)
+mBlueDragonAncient = monster("Ancient Blue Dragon", "huge", "desert", "dragon", "dragon", 18)
+mBlueDragonYoung = monster("Young Blue Dragon", "large", "desert", "dragon", "dragon", 9)
+mGreenDragonAdult = monster("Adult Green Dragon", "huge", "forest", "dragon", "dragon", 12)
+mGreenDragonAncient = monster("Ancient Green Dragon", "huge", "forest", "dragon", "dragon", 17)
+mGreenDragonYoung = monster("Young Green Dragon", "large", "forest", "dragon", "dragon", 8)
+mForestDragonAdult = monster("Adult Forest Dragon", "huge", "jungle", "dragon", "dragon", 14)
+mForestDragonAncient = monster("Ancient Forest Dragon", "huge", "jungle", "dragon", "dragon", 19)
+mForestDragonYoung = monster("Young Forest Dragon", "large", "jungle", "dragon", "dragon", 10)
+mRedDragonAdult = monster("Adult Red Dragon", "huge", "mountains", "dragon", "dragon", 14)
+mRedDragonAncient = monster("Ancient Red Dragon", "huge", "mountains", "dragon", "dragon", 19)
+mRedDragonYoung = monster("Young Red Dragon", "large", "mountains", "dragon", "dragon", 10)
+mUnderworldDragonAdult = monster("Adult Underworld Dragon", "huge", "underground", "dragon", "dragon", 11)
+mUnderworldDragonAncient = monster("Ancient Underworld Dragon", "huge", "underground", "dragon", "dragon", 16)
+mUnderworldDragonYoung = monster("Young Underworld Dragon", "large", "underground", "dragon", "dragon", 7)
+mWhiteDragonAdult = monster("Adult White Dragon", "large", "tundra", "dragon", "dragon", 10)
+mWhiteDragonAncient = monster("Ancient White Dragon", "huge", "tundra", "dragon", "dragon", 15)
+mWhiteDragonYoung = monster("Young White Dragon", "large", "tundra", "dragon", "dragon", 6)
+mDesertDrake = monster("Desert Drake", "large", "desert", "dragon", "drake", 8)
+mFrostDrake = monster("Frost Drake", "large", "tundra", "dragon", "drake", 7)
+mJungleDrake = monster("Jungle Drake", "large", "jungle", "dragon", "drake", 6)
+mPrairieDrake = monster("Prairie Drake", "small", "plains", "dragon", "drake", 2)
+mRiverDrake = monster("River Drake", "medium", "amphibious", "dragon", "drake", 3)
+mSeaDrake = monster("Sea Drake", "large", "aquatic", "dragon", "drake", 6)
+mWyvern = monster("Wyvern", "large", "mountains", "dragon", "drake", 6)
+
+enviroments = ("any", "aquatic", "amphibious", "desert", "extraplaner", "forest", "hills", "jungle", "mountains", "plains", "swamp", "tundra", "underground", "urban")
+families = ("aberration", "animal", "asteral", "beast", "celestial", "construct", "dragon", "dream", "elemental", "ethereal", "fey", "fiend", "fungus", "giant", "humanoid", "monitor", "ooze", "petitioner", "plant", "shadow", "spirit", "time", "undead")
+
+
+#set values for any variable needed
 def user_input():
-
+	verify = False
 	global threatLevel
 	global partyNumber
 	global partyLevelModify
 	global enemies #remember to global anything used by multiple blocks?
 	global enemiesPartyVisual
 	global partyLevel
+	global terrain
 
 	print('party level?')
 	partyLevel = float(input())
-
 	print('how many party members?')
 	partyNumber = int(input())
-
-	print("what threat level do you want? 1 is trivial, 2 is low, 3 is moderate, 4 is severe, 5 is extreme ")
-	threatLevel = int(input())
-
+	while verify == False:	
+		check = (1, 2, 3, 4, 5)
+		print("what threat level do you want? 1 is trivial, 2 is low, 3 is moderate, 4 is severe, 5 is extreme ")
+		threatLevel = int(input())
+		if threatLevel in check:
+			verify = True	
+	print("enter a terrain")
+	verify = False
+	while verify == False:
+		print("What terrain?")
+		terrain = input()
+		if terrain in enviroments:
+			verify = True
 	PartyLevelModify = float(1.0) #needs to be float
 
+#get the xp budget to spend on monsters
 def budgeter():
 	if (threatLevel == 1):
 		xpBudget = 40
@@ -80,9 +518,8 @@ def budgeter():
 	xpBudget = (int((xpBudget / 10) * partyNumberModify)) * 10
 	return(xpBudget)
 	
-
+	#spend budget on monster levels
 def partyComp():
-
 	x = int(budgeter())
 	xPerm = x #if reference is needed
 	x = x / 5
@@ -125,52 +562,36 @@ def partyComp():
 			list.sort(enemiesPartyVisual)
 			return enemiesPartyVisual
 			#done generating party
-			
-def lootGen():
 
+#get lootvalue
+def lootGen(a, b):
+	ratioList = (0, 0.07, 0.1, 0.15, 0.2)
+	y = ratioList[a - 1]
+	gTotal = calculateGP(b)
+	return (y * gTotal)
 	
-	if (threatLevel == 1):
-		personalGoldReward = False
-	elif (threatLevel == 2):
-		personalGoldReward = 0
-	elif (threatLevel ==3):
-		personalGoldReward = 1
-	elif (threatLevel == 4):
-		personalGoldReward = 	2	
-	elif (threatLevel == 5):
-		personalGoldReward = 3
-		
-	#partyLevel
-	#need formula for gold generation		
-  #party level 1-20, need to find equation for gold table
-  #build list? with each base and put through function for gold table equation with threat level choosing which four bases, trivial has none.
-  #return amount of gold and subtract loot from value.
+def calculateGP(x):
+	if x == 1:
+		return 175
+	else:
+		return 2.5 * (x ** 3) - 10 * (x **2) + 150 * x + 50
   
-def monSort(x):
-	desiredLevel= x
+ #retrieve all monster class objects to sort from
+def monSort():
 	allMons = []
-	sortedMons = []
-
 	allVariables = dict(globals(), **locals())
-	
 	for name, var in allVariables.items():
 		if isinstance(var, monster):
-			allMons.append(var) 
-		for x in allMons:
-			if int(getattr(x, "CR")) == int(desiredLevel):
-				if x not in sortedMons:
-					sortedMons.append(x)
-	return sortedMons
-	
-	    #add to monster bank
-	
-def monPicker():
+			allMons.append(var)
+	return allMons
+
+#changes list of player level modified list to true monster level list
+def monChoices():
 	global partyLevel
-	monList = partyComp()
+	global typeMon
+	y = partyLevel
 	monLevelList = []
-	levelList = []
-	#monChoices = monSort(x)
-	partyNumber 
+	monList = partyComp()
 	for x in monList:
 		if x == "PL-4":
 			monLevelList.append(-4)
@@ -190,70 +611,96 @@ def monPicker():
 			monLevelList.append(3)
 		if x == "PL+4":
 			monLevelList.append(4)
-	for x in monLevelList:
-		levelList.append(random.choice((monSort(partyLevel + x))))
-	for x in levelList:
-		print(x.__dict__)
+	tempList = [x + int(partyLevel) for x in monLevelList]
+	return tempList
 	
-	
-
-while 1 == 1: #to test with different inputs
-	def main():
-		user_input() 
-		monPicker()#returns enemiesPartyVisual
-		#monSort() #returns sortedMons
-	main()
+#sort monsters based on common filters
+def monListFilter(y, a, b): # cant use for CR?
+	tempGroup = []
+	for x in y:
+		if getattr(x, a) == b:
+			tempGroup.append(x)
+		
+	return tempGroup
 	
 
+	#make the list to pull from
+def monListMaker():
+	global terrain
+	global partyLevel
+	typeOfMon = None 
+	tempList = []
+	primeList = []	
+	secondaryList = []
+	filteredByCR = []
+	filteredByType = []
+	filteredByTerrain = []
+	allMons = monSort()
+	finalList = []
+	for CR in allMons:
+		if (int(partyLevel - 4) < int(getattr(CR, "CR")) < int(partyLevel + 4)):
+			if CR not in filteredByCR:
+				filteredByCR.append(CR)
+	list1 = monListFilter(filteredByCR, "terrain", terrain)
+	list2 = monListFilter(filteredByCR, "terrain", "any")
+	filteredByTerrain = list1 + list2	
+	
+	for x in filteredByTerrain:
+		if terrain == "aquatic":
+			if getattr(x, "terrain") == "any":
+				filteredByTerrain.remove(x)
+	 
+	return filteredByTerrain
 
-enviroments = ("any", "aquatic", "desert", "extraplaner", "forest", "hills", "jungle", "mountains", "plains", "swamp", "tundra", "underground", "urban")
+#pick one to set type with
+def monOnePicker():
+	global levelListChoices 
+	tempList = []
+	levelListChoices = monChoices()
+	monList = monListMaker()
+	tempVar = levelListChoices.pop(0)
+	for x in monList:
+		if int(getattr(x, "CR")) == int(tempVar):
+			tempList.append(x)	
+	tempMon = random.choice(tempList)
+	return tempMon
+	
+def main():
+	global levelListChoices
+	global partyLevel
+	global threatLevel
+	user_input()
+	firstMon = monOnePicker()
+	finalList= []
+	finalList.append(firstMon)
+	trueList = []
+	typeMon = getattr(firstMon, "type")
+	filteredByTerrain = []
+	filteredByTerrain = monListMaker()
+	trueList = monListFilter(filteredByTerrain, "type", typeMon)
+	for x in trueList:
+		for y in levelListChoices:
+			if getattr(x, "CR") == y:
+				finalList.append(x)
+				levelListChoices.remove(y)
+			else:
+				pass
+		
+		
+	for x in finalList:
+	 print(x.__dict__)
+	gold = lootGen(threatLevel, partyLevel)
+	print("gp total: ", gold)
+while 1 == 1:
+	main() #to test with different inputs
+
+
+
+	
+
+#just to have to verify?
+enviroments = ("any", "aquatic", "amphibious", "desert", "extraplaner", "forest", "hills", "jungle", "mountains", "plains", "swamp", "tundra", "underground", "urban")
 families = ("aberration", "animal", "asteral", "beast", "celestial", "construct", "dragon", "dream", "elemental", "ethereal", "fey", "fiend", "fungus", "giant", "humanoid", "monitor", "ooze", "petitioner", "plant", "shadow", "spirit", "time", "undead")
 
 
-"""
 
-#use for loot generation
-Level	Total Treasure per Level	Low	Moderate	Severe	Extreme	Extra Treasure
-1	175 gp	13 gp	18 gp	26 gp	35 gp	35 gp
-2	300 gp	23 gp	30 gp	45 gp	60 gp	60 gp
-3	500 gp	38 gp	50 gp	75 gp	100 gp	100 gp
-4	850 gp	65 gp	85 gp	130 gp	170 gp	170 gp
-5	1,350 gp	100 gp	135 gp	200 gp	270 gp	270 gp
-6	2,000 gp	150 gp	200 gp	300 gp	400 gp	400 gp
-7	2,900 gp	220 gp	290 gp	440 gp	580 gp	580 gp
-8	4,000 gp	300 gp	400 gp	600 gp	800 gp	800 gp
-9	5,700 gp	430 gp	570 gp	860 gp	1,140 gp	1,140 gp
-10	8,000 gp	600 gp	800 gp	1,200 gp	1,600 gp	1,600 gp
-11	11,500 gp	865 gp	1,150 gp	1,725 gp	2,300 gp	2,300 gp
-12	16,500 gp	1,250 gp	1,650 gp	2,475 gp	3,300 gp	3,300 gp
-13	25,000 gp	1,875 gp	2,500 gp	3,750 gp	5,000 gp	5,000 gp
-14	36,500 gp	2,750 gp	3,650 gp	5,500 gp	7,300 gp	7,300 gp
-15	54,500 gp	4,100 gp	5,450 gp	8,200 gp	10,900 gp	10,900 gp
-16	82,500 gp	6,200 gp	8,250 gp	12,400 gp	16,500 gp	16,500 gp
-17	128,000 gp	9,600 gp	12,800 gp	19,200 gp	25,600 gp	25,600 gp
-18	208,000 gp	15,600 gp	20,800 gp	31,200 gp	41,600 gp	41,600 gp
-19	355,000 gp	26,600 gp	35,500 gp	53,250 gp	71,000 gp	71,000 gp
-20	490,000 gp	36,800 gp	49,000 gp	73,500 gp	98,000 gp	98,000 gp
-
-1, 175
-10, 8000
-20, 490000
-
-1(490000-8000)+175(10-20)+(20*8000-10*490000)
----------------------------------------------
-(1-10)(1-20)(10-20)
-
--4259750
---------   
--1710		
-
-	NO GOOD FUNCTION... easier to insert full chart	
-
-
-#trivial 0, 
-#low is 7.5% round up, 
-#moderate is 10%
-#severe is 15%
-#extreme is 20%
-
-"""
